@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
       this.auth.login(memberId)
         .subscribe(
           data => {
+            console.info('data', data)
             this.loginErrors = false;
             console.log('Form Submitted passed');
             this.isLoading = false;

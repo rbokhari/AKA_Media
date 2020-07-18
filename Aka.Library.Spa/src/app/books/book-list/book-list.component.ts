@@ -8,7 +8,7 @@ import { Book } from '../../shared/book';
 import { slideInDownAnimation } from '../../animations';
 import { Router, ActivatedRoute } from '@angular/router';
 import { map as lmap, unionBy } from 'lodash';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-book-list',
@@ -44,6 +44,7 @@ export class BookListComponent implements OnInit, AfterViewInit {
           })
         )
         .subscribe((books: Book []) => {
+          console.info('books', books.filter(book => !book.isAvailable));
           this.dataSource.data = books;
         });
     }

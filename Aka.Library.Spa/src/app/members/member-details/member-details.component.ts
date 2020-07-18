@@ -20,7 +20,7 @@ export class MemberDetailsComponent implements OnInit {
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display') display = 'block';
   @HostBinding('style.position') position = 'initial';
-
+ 
   firstName: string;
   lastName: string;
   postalCode: string;
@@ -49,11 +49,11 @@ export class MemberDetailsComponent implements OnInit {
       .pipe(
         switchMap((params: ParamMap) =>
         this.service.getMember(+params.get('id'))),
-        tap(m => {
-          this.firstName = m.fullName.split(' ')[0];
-          this.lastName = m.fullName.split(' ')[1];
-          this.postalCode = m.postalCode;
-        })
+          tap(m => {
+            this.firstName = m.fullName.split(' ')[0];
+            this.lastName = m.fullName.split(' ')[1];
+            this.postalCode = m.postalCode;
+          })
       );
   }
 

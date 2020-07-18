@@ -113,9 +113,11 @@ export class BookDetailsComponent implements OnInit {
         return { ...book, isAvailable: areBooksAvailable, isCheckedOut: hasUserCheckedThisBookOut };
       }),
       catchError(err => {
+        console.info('error', err);
         return throwError(err);
       })
-    );
+    )
+    .subscribe(book => this.book = book);
   }
 
 }
